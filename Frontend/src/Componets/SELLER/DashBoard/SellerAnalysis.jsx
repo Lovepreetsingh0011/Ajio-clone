@@ -8,11 +8,18 @@ import { FaUserAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { IoSettings } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { BsCollectionFill } from "react-icons/bs";
 
 export const SellerAnalysis = () => {
   return (
     <>
-      <div className="   w-full flex flex-col h-auto pt-8 ">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="   w-full flex flex-col h-auto pt-8 "
+      >
         {/* First Div */}
 
         <div className="w-full h-[25vh]  flex justify-between items-center text-black ">
@@ -21,9 +28,9 @@ export const SellerAnalysis = () => {
             <p className="pt-1">Whole Data About Your Bussiness Here</p>
           </div>
           <div className="mr-7">
-            <button className="px-3 py-2 bg-green-600 text-gray-50 rounded-lg">
+            {/* <button className="px-3 py-2 bg-green-600 text-gray-50 rounded-lg">
               Add Product
-            </button>
+            </button> */}
           </div>
         </div>
         {/* Second Div */}
@@ -82,37 +89,49 @@ export const SellerAnalysis = () => {
         </div>
         {/* Third Div */}
         <div className="h-auto w-full mt-20 pl-2 pr-2 flex justify-around items-center">
-          {/* All Product */}
-          <motion.div
-            whileHover={{
-              scale: 1.1,
-              transition: { duration: 0.7 },
-            }}
-            whileTap={{ scale: 0.9 }}
-            className="bg-slate-200 py-3 shadow-gray-500 shadow-xl w-[30%] flex justify-center items-center text-black "
-          >
-            <MdOutlineCollections className="text-5xl mr-6 md:text-4xl md:mr-3 lg:mr-6 lg:text-5xl text-gray-900 " />
-            <div>
-              <h3 className="text-lg font-serif text-gray-700">All Products</h3>
-              <h2 className="text-2xl md:text-xl lg:text-2xl font-semibold">
-                $34334.43
-              </h2>
-            </div>
-          </motion.div>
-          {/* Account details */}
-          <motion.div
-            whileHover={{
-              scale: 1.1,
-              transition: { duration: 0.7 },
-            }}
-            whileTap={{ scale: 0.9 }}
-            className="bg-slate-200 py-3 shadow-gray-500 shadow-xl w-[30%] flex justify-center items-center text-black  "
-          >
-            <FaUserAlt className="text-5xl mr-6 md:text-4xl md:mr-3 lg:mr-6 lg:text-5xl text-gray-900 " />
-            <div>
-              <h3 className="text-xl py-3 font-serif text-gray-700">Account</h3>
-            </div>
-          </motion.div>
+          {/* ADD Product */}
+          <Link to={"/sellerpanel/Auth/Addproduct"} className="w-[30%]">
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.7 },
+              }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-slate-200 py-3 shadow-gray-500 shadow-xl w-[100%] flex justify-center items-center text-black "
+            >
+              <MdOutlineCollections className="text-5xl mr-6 md:text-4xl md:mr-3 lg:mr-6 lg:text-5xl text-gray-900 " />
+              <div>
+                <h3 className=" text-2xl md:text-xl lg:text-2xl   font-serif text-gray-700 ">
+                  ADD Products
+                </h3>
+                {/* <h2 className="text-2xl md:text-xl lg:text-2xl font-semibold">
+                  $34334.43
+                </h2> */}
+              </div>
+            </motion.div>
+          </Link>
+
+          {/* ALL Product */}
+          <Link to={"/sellerpanel/Auth/AllProducts"} className="w-[30%]">
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.7 },
+              }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-slate-200 py-3 shadow-gray-500 shadow-xl w-[100%] flex justify-center items-center text-black "
+            >
+              <BsCollectionFill className="text-5xl mr-6 md:text-4xl md:mr-3 lg:mr-6 lg:text-5xl text-gray-900 " />
+              <div>
+                <h3 className=" text-2xl md:text-xl lg:text-2xl   font-serif text-gray-700 ">
+                  ALL Products
+                </h3>
+                {/* <h2 className="text-2xl md:text-xl lg:text-2xl font-semibold">
+                  $34334.43
+                </h2> */}
+              </div>
+            </motion.div>
+          </Link>
           {/* Update Details  */}
           <motion.div
             whileHover={{
@@ -180,7 +199,7 @@ export const SellerAnalysis = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

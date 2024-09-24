@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation: {
+        "pulse-slow": "pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
       colors: {
         hed: "#866528",
         pri: "#6D6D6D",

@@ -7,7 +7,6 @@ const Product_create_controler = async (req, res) => {
   try {
     const {
       Name,
-      Tags,
       Category,
       SubCategory,
       ChildSubCategory,
@@ -115,7 +114,6 @@ const Product_create_controler = async (req, res) => {
       Name,
       Userid: req.user,
       SellerId: req.seller,
-      Tags,
       Category,
       SubCategory,
       ChildSubCategory,
@@ -175,7 +173,6 @@ const Update_Product_Details_Controler = async (req, res) => {
     }
     const {
       Name,
-      Tags,
       Category,
       SubCategory,
       ChildSubCategory,
@@ -195,7 +192,6 @@ const Update_Product_Details_Controler = async (req, res) => {
     if (
       [
         Name,
-        Tags,
         Category,
         SubCategory,
         ChildSubCategory,
@@ -248,7 +244,6 @@ const Update_Product_Details_Controler = async (req, res) => {
       id,
       {
         Name,
-        Tags,
         Category,
         SubCategory,
         ChildSubCategory,
@@ -300,8 +295,10 @@ const Update_image_controler = async (req, res) => {
         success: false,
       });
     }
-    const Image = req.file;
-    if (Image == null) {
+
+    const Img = req.file;
+
+    if (Img == null) {
       return res.status(404).json({
         msg: "Image is required to change",
         success: false,
@@ -320,8 +317,8 @@ const Update_image_controler = async (req, res) => {
       });
     }
 
-    const img = await Uploadcloud(Image.path);
-    if (!img.url) {
+    const image = await Uploadcloud(Img.path);
+    if (!image.url) {
       return res.status(404).json({
         msg: "Image cannot upload on cloud ",
         success: false,
@@ -332,7 +329,7 @@ const Update_image_controler = async (req, res) => {
     const data = await Product.findByIdAndUpdate(
       { _id: id },
       {
-        Image: img.url,
+        Image: image.url,
       },
       { new: true }
     );
@@ -367,8 +364,8 @@ const Update_image1_controler = async (req, res) => {
         success: false,
       });
     }
-    const Image1 = req.file;
-    if (Image1 == null) {
+    const Img = req.file;
+    if (Img == null) {
       return res.status(404).json({
         msg: "Image1 is required to change",
         success: false,
@@ -387,8 +384,8 @@ const Update_image1_controler = async (req, res) => {
       });
     }
 
-    const img = await Uploadcloud(Image1.path);
-    if (!img.url) {
+    const image = await Uploadcloud(Img.path);
+    if (!image.url) {
       return res.status(404).json({
         msg: "Image1 cannot upload on cloud ",
         success: false,
@@ -399,7 +396,7 @@ const Update_image1_controler = async (req, res) => {
     const data = await Product.findByIdAndUpdate(
       { _id: id },
       {
-        Image1: img.url,
+        Image1: image.url,
       },
       { new: true }
     );
@@ -434,8 +431,8 @@ const Update_image2_controler = async (req, res) => {
         success: false,
       });
     }
-    const Image2 = req.file;
-    if (Image2 == null) {
+    const Img = req.file;
+    if (Img == null) {
       return res.status(404).json({
         msg: "Image2 is required to change",
         success: false,
@@ -453,8 +450,8 @@ const Update_image2_controler = async (req, res) => {
       });
     }
 
-    const img = await Uploadcloud(Image2.path);
-    if (!img.url) {
+    const image = await Uploadcloud(Img.path);
+    if (!image.url) {
       return res.status(404).json({
         msg: "Image2 cannot upload on cloud ",
         success: false,
@@ -465,7 +462,7 @@ const Update_image2_controler = async (req, res) => {
     const data = await Product.findByIdAndUpdate(
       { _id: id },
       {
-        Image2: img.url,
+        Image2: image.url,
       },
       { new: true }
     );
@@ -500,8 +497,8 @@ const Update_image3_controler = async (req, res) => {
         success: false,
       });
     }
-    const Image3 = req.file;
-    if (Image3 == null) {
+    const Img = req.file;
+    if (Img == null) {
       return res.status(404).json({
         msg: "Image3 is required to change",
         success: false,
@@ -519,8 +516,8 @@ const Update_image3_controler = async (req, res) => {
       });
     }
 
-    const img = await Uploadcloud(Image3.path);
-    if (!img.url) {
+    const imgage = await Uploadcloud(Img.path);
+    if (!imgage.url) {
       return res.status(404).json({
         msg: "Image3 cannot upload on cloud ",
         success: false,
@@ -531,7 +528,7 @@ const Update_image3_controler = async (req, res) => {
     const data = await Product.findByIdAndUpdate(
       { _id: id },
       {
-        Image3: img.url,
+        Image3: imgage.url,
       },
       { new: true }
     );
@@ -566,8 +563,8 @@ const Update_image4_controler = async (req, res) => {
         success: false,
       });
     }
-    const Image4 = req.file;
-    if (Image4 == null) {
+    const Img = req.file;
+    if (Img == null) {
       return res.status(404).json({
         msg: "Image4 is required to change",
         success: false,
@@ -585,8 +582,8 @@ const Update_image4_controler = async (req, res) => {
       });
     }
 
-    const img = await Uploadcloud(Image4.path);
-    if (!img.url) {
+    const image = await Uploadcloud(Img.path);
+    if (!image.url) {
       return res.status(404).json({
         msg: "Image4 cannot upload on cloud ",
         success: false,
@@ -597,7 +594,7 @@ const Update_image4_controler = async (req, res) => {
     const data = await Product.findByIdAndUpdate(
       { _id: id },
       {
-        Image4: img.url,
+        Image4: image.url,
       },
       { new: true }
     );
@@ -761,7 +758,11 @@ const Getsingle_Seller_product = async (req, res) => {
     }
     const data = await Product.findOne({
       $and: [{ _id: id }, { SellerId: req.seller }],
-    });
+    })
+      .populate("ChildSubCategory")
+      .populate("SubCategory")
+      .populate("Category")
+      .populate("Offerid");
     if (!data) {
       return res.status(404).json({
         msg: "error occur Will find  product ",

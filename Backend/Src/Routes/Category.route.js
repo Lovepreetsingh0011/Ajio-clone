@@ -13,6 +13,7 @@ import {
 } from "../Controler/Category.controler.js";
 import { AuthMiddelware } from "../Middelware/AuthMiddelware.js";
 import { AdminMiddelware } from "../Middelware/AdminMiddelware.js";
+import { SellerMiddelware } from "../Middelware/SellerMiddelware.js";
 const router = Router();
 
 router.route("/create").post(AuthMiddelware, AdminMiddelware, Create_controler);
@@ -40,9 +41,9 @@ router
 
 router
   .route("/getsingle")
-  .post(AuthMiddelware, AdminMiddelware, Get_single_Category_ByName);
+  .post(AuthMiddelware, SellerMiddelware, Get_single_Category_ByName);
 router
   .route("/getsingle/:id")
-  .get(AuthMiddelware, AdminMiddelware, Get_single_Category_ByID);
+  .get(AuthMiddelware, SellerMiddelware, Get_single_Category_ByID);
 
 export default router;

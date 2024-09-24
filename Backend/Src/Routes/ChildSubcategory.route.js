@@ -9,6 +9,7 @@ import {
 } from "../Controler/ChildSubCategory.controler.js";
 import { AuthMiddelware } from "../Middelware/AuthMiddelware.js";
 import { AdminMiddelware } from "../Middelware/AdminMiddelware.js";
+import { SellerMiddelware } from "../Middelware/SellerMiddelware.js";
 
 const router = Router();
 
@@ -23,9 +24,9 @@ router
 router.route("/getall").get(GetAll_controler);
 router
   .route("/getsinglewithName/:Name")
-  .get(AuthMiddelware, AdminMiddelware, Getsingle_withName);
+  .get(AuthMiddelware, SellerMiddelware, Getsingle_withName);
 router
   .route("/getsinglewithId/:id")
-  .get(AuthMiddelware, AdminMiddelware, Getsingle_withID);
+  .get(AuthMiddelware, SellerMiddelware, Getsingle_withID);
 
 export default router;

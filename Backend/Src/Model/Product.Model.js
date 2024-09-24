@@ -34,7 +34,6 @@ const ProductSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: "Seller",
     },
-    Tags: [{ type: String }],
     Category: {
       type: mongoose.Types.ObjectId,
       ref: "Category",
@@ -45,13 +44,12 @@ const ProductSchema = new Schema(
       ref: "Subcategory",
       required: [true, "Product SubCategory is Required"],
     },
-    ChildSubCategory: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "ChildSubcategory",
-        required: true,
-      },
-    ],
+    ChildSubCategory: {
+      type: mongoose.Types.ObjectId,
+      ref: "ChildSubcategory",
+      required: true,
+    },
+
     ProductType: {
       type: String,
       required: true,
@@ -77,8 +75,9 @@ const ProductSchema = new Schema(
       required: true,
     },
     Offerid: {
-      type: String,
-      required: true,
+      type: mongoose.Types.ObjectId,
+      ref: "Offer",
+      required: [true, "Product offerId is Required"],
     },
     FinalPrice: {
       type: String,

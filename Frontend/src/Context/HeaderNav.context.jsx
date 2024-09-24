@@ -33,6 +33,13 @@ export const HeaderNavProvider = ({ children }) => {
     Men_Grooming: [],
     Featured_Brands: [],
   });
+  const [Kitchen, setKitchen] = useState({
+    Kitchen: [],
+    Dining: [],
+    Home_Decor: [],
+    Festive_Gifts: [],
+    Bath: [],
+  });
   const [category, setcategory] = useState([]);
   const reqhandler = async () => {
     try {
@@ -47,6 +54,9 @@ export const HeaderNavProvider = ({ children }) => {
       );
       const res4 = await axios.get(
         "http://localhost:3000/app/api/category/getallwithChildSubCategory/66e9c55fb51477ee939cc297"
+      );
+      const res5 = await axios.get(
+        "http://localhost:3000/app/api/category/getallwithChildSubCategory/66e9d3b4b51477ee939cc5df"
       );
 
       setMen({
@@ -79,6 +89,13 @@ export const HeaderNavProvider = ({ children }) => {
         Men_Grooming: res4?.data?.data[4],
         Featured_Brands: res4?.data?.data[5],
       });
+      setKitchen({
+        Kitchen: res5?.data?.data[0],
+        Dining: res5?.data?.data[1],
+        Home_Decor: res5?.data?.data[2],
+        Festive_Gifts: res5?.data?.data[3],
+        Bath: res5?.data?.data[4],
+      });
     } catch (error) {
       console.log(error);
     }
@@ -91,7 +108,18 @@ export const HeaderNavProvider = ({ children }) => {
 
   return (
     <HeaderNavcontext.Provider
-      value={{ Men, setMen, Women, setWomen, Kids, setKids, Beauty, setBeauty }}
+      value={{
+        Men,
+        setMen,
+        Women,
+        setWomen,
+        Kids,
+        setKids,
+        Beauty,
+        setBeauty,
+        Kitchen,
+        setKitchen,
+      }}
     >
       {children}
     </HeaderNavcontext.Provider>

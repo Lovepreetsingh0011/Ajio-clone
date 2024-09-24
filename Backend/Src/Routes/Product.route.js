@@ -46,43 +46,43 @@ router
   .post(AuthMiddelware, SellerMiddelware, Update_Product_Details_Controler);
 
 router
-  .route("/update_image/:id")
+  .route("/update_Image/:id")
   .put(
     AuthMiddelware,
     SellerMiddelware,
-    upload.single("Image"),
+    upload.single("Img"),
     Update_image_controler
   );
 router
-  .route("/update_image1/:id")
+  .route("/update_Image1/:id")
   .put(
     AuthMiddelware,
     SellerMiddelware,
-    upload.single("Image1"),
+    upload.single("Img"),
     Update_image1_controler
   );
 router
-  .route("/update_image2/:id")
+  .route("/update_Image2/:id")
   .put(
     AuthMiddelware,
     SellerMiddelware,
-    upload.single("Image2"),
+    upload.single("Img"),
     Update_image2_controler
   );
 router
-  .route("/update_image3/:id")
+  .route("/update_Image3/:id")
   .put(
     AuthMiddelware,
     SellerMiddelware,
-    upload.single("Image3"),
+    upload.single("Img"),
     Update_image3_controler
   );
 router
-  .route("/update_image4/:id")
+  .route("/update_Image4/:id")
   .put(
     AuthMiddelware,
     SellerMiddelware,
-    upload.single("Image4"),
+    upload.single("Img"),
     Update_image4_controler
   );
 

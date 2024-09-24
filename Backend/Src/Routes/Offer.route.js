@@ -7,6 +7,7 @@ import {
   Get_Offer_by_id,
   Offer_create_controler,
 } from "../Controler/Offer.controler.js";
+import { SellerMiddelware } from "../Middelware/SellerMiddelware.js";
 
 const router = Router();
 
@@ -14,11 +15,11 @@ router
   .route("/create")
   .post(AuthMiddelware, AdminMiddelware, Offer_create_controler);
 // second
-router.route("/getall").get(AuthMiddelware, AdminMiddelware, Get_all_offer);
+router.route("/getall").get(AuthMiddelware, SellerMiddelware, Get_all_offer);
 //third
 router
   .route("/get_by_id/:id")
-  .get(AuthMiddelware, AdminMiddelware, Get_Offer_by_id);
+  .get(AuthMiddelware, SellerMiddelware, Get_Offer_by_id);
 // fourth
-router.route("/delete/:id").put(AuthMiddelware, AdminMiddelware, Delete_offer);
+router.route("/delete/:id").put(AuthMiddelware, SellerMiddelware, Delete_offer);
 export default router;

@@ -155,7 +155,7 @@ const Login_Check_OTP_Controler = async (req, res) => {
     // Set Cookie
     var option = {
       secure: false,
-      maxAge: 9000000,
+      maxAge: 90000000,
       httpOnly: false,
     };
     const Token = jwt.sign({ _id: user._id }, "lovepreet");

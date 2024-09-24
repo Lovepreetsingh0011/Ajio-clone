@@ -14,6 +14,7 @@ import { WomenNav } from "./HeaderNavigation/WomenNav";
 import Cookies from "js-cookie";
 import { KidsNav } from "./HeaderNavigation/KidsNav";
 import { BeautyNav } from "./HeaderNavigation/BeautyNav";
+import { KitchenNav } from "./HeaderNavigation/KitchenNav";
 
 export const Header = () => {
   axios.defaults.withCredentials = true;
@@ -24,6 +25,7 @@ export const Header = () => {
   const [Womennav, setWomennav] = useState(false);
   const [Kidsnav, setKidsnav] = useState(false);
   const [Beautynav, setBeautynav] = useState(false);
+  const [Kitchennav, setKitchennav] = useState(false);
 
   const [bag_det, setbag_det] = useState(false);
   const { Auth, setAuth, SellerAuth, setSellerAuth } = UseAuth();
@@ -76,6 +78,7 @@ export const Header = () => {
                   <MenNav
                     onMouseEnter={() => setMennav(true)}
                     onMouseLeave={() => setMennav(false)}
+                    setMennav={setMennav}
                   />
                 </>
               ) : (
@@ -138,8 +141,23 @@ export const Header = () => {
                 <></>
               )}
             </li>
-            <li className="hover:border-b-[1.5px] hover:border-black">
-              <a href="#">HOME & KITCHEN</a>
+            {/* HOME AND KITCHEN */}
+            <li
+              onMouseEnter={() => setKitchennav(true)}
+              onMouseLeave={() => setKitchennav(false)}
+              className=" hover:border-b-[1.5px] hover:border-black  "
+            >
+              <Link to={"#"}>HOME & KITCHEN</Link>
+              {Kitchennav ? (
+                <>
+                  <KitchenNav
+                    onMouseEnter={() => setKitchennav(true)}
+                    onMouseLeave={() => setKitchennav(false)}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
             </li>
           </ul>
         </div>

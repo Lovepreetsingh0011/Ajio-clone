@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { UseHeaderNav } from "../../../Context/HeaderNav.context";
-import { Link } from "react-router-dom";
-export const MenNav = () => {
+import { Link, useNavigate } from "react-router-dom";
+export const MenNav = ({ setMennav }) => {
   const { Men } = UseHeaderNav();
-
+  const navigate = useNavigate();
+  const clickhandler = (id, catid) => {
+    navigate(`/GetAllBySubCat/${id}/${catid}`);
+    setMennav(false);
+  };
   return (
     <>
       <div className=" absolute z-10 w-[85vw]  h-auto pb-16 bg-white  left-[3.5%] ">
@@ -37,12 +41,14 @@ export const MenNav = () => {
               <h2 className="font-black mb-3">WESTERN WEAR</h2>
               {Men?.Clothings?.SubCategory?.map((value) => {
                 return (
-                  <Link
-                    key={value.id}
+                  <button
+                    // to={`/GetAllBySubCat/${value?._id}`}
+                    onClick={() => clickhandler(value._id, Men?.Clothings._id)}
+                    key={value._id}
                     className="pt-[0.5] mr-auto text-gray-500 hover:border-b-[1.5px] hover:border-gray-400  "
                   >
                     {value.Name}
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -51,12 +57,13 @@ export const MenNav = () => {
               <h2 className="font-black mb-2"> FOOTWEAR</h2>
               {Men?.Footwear?.SubCategory?.map((value) => {
                 return (
-                  <Link
-                    key={value.id}
+                  <button
+                    key={value._id}
+                    onClick={() => clickhandler(value._id, Men?.Footwear?._id)}
                     className="pt-[0.5] mr-auto text-gray-500 hover:border-b-[1.5px] hover:border-gray-400"
                   >
                     {value.Name}
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -68,12 +75,15 @@ export const MenNav = () => {
               <h2 className="font-black mb-3">ACCESSORIES</h2>
               {Men?.Accessories?.SubCategory?.map((value) => {
                 return (
-                  <Link
-                    key={value.id}
+                  <button
+                    key={value._id}
+                    onClick={() =>
+                      clickhandler(value._id, Men?.Accessories._id)
+                    }
                     className="pt-[0.5] mr-auto text-gray-500 hover:border-b-[1.5px] hover:border-gray-400"
                   >
                     {value.Name}
-                  </Link>
+                  </button>
                 );
               })}
             </div>

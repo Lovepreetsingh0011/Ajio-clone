@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const SellerSideBar = () => {
   return (
     <>
-      <aside
+      <motion.aside
+        initial={{ opacity: -10 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
         id="separator-sidebar"
         className="fixed  lg:top-[9.5vh] md:top-[8vh] left-0 z-20 w-[20vw] h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
@@ -218,7 +222,7 @@ export const SellerSideBar = () => {
             </li>
           </ul>
         </div>
-      </aside>
+      </motion.aside>
     </>
   );
 };

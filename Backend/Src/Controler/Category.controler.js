@@ -406,6 +406,7 @@ const Get_single_Category_ByName = async (req, res) => {
 const Get_single_Category_ByID = async (req, res) => {
   try {
     const { id } = req.params;
+
     if (!id || id.trim() == "") {
       return res.status(404).json({
         msg: "Id is Required",
@@ -413,7 +414,7 @@ const Get_single_Category_ByID = async (req, res) => {
       });
     }
 
-    const data = await Category.findById(id);
+    const data = await Category.findById(id).populate("SubCategory");
     if (!data) {
       return res.status(404).json({
         msg: "cant find ",
@@ -429,7 +430,7 @@ const Get_single_Category_ByID = async (req, res) => {
     });
   } catch (error) {
     return res.status(404).json({
-      msg: "error occur in Get All Category controler",
+      msg: "error occur in Get single  Category by id controler",
       success: false,
       error: error.message,
     });

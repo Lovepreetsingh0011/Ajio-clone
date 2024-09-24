@@ -10,6 +10,7 @@ import {
   Getsingle_withName,
   Getsingle_withId,
 } from "../Controler/Subcategory.controler.js";
+import { SellerMiddelware } from "../Middelware/SellerMiddelware.js";
 
 const router = Router();
 
@@ -28,6 +29,6 @@ router
 router.route("/getsingle_withName/:Name").get(Getsingle_withName);
 router
   .route("/getsingle_withId/:id")
-  .get(AuthMiddelware, AdminMiddelware, Getsingle_withId);
+  .get(AuthMiddelware, SellerMiddelware, Getsingle_withId);
 
 export default router;
